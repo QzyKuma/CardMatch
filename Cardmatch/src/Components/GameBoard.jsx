@@ -1,67 +1,72 @@
-import React from 'react';
-import Data from './Data';
-import Card from './Card';
+
+import React from "react";
+import Data from "./Data";
+import Card from "./Card";
 
 
-function GameBoard () {
-        const [cardsArray, setCardsArray] = React.useState([]);
-        const [moves, setMoves] = React.useState(0);
-        const [firstCard, setFirstCard] = React.useState(null);
-        const [secondCard, setSecondCard] = React.useState(null);
-        const [stopFlip, setStopFlip] = React.useState(false);
-        const [won, setWon] = React.useState(0);
 
-        // Function to start game
+function GameBoard() {
+    const [cardsArray, setCardsArray] = React.useState([]);
+    const [moves, setMoves] = React.useState(0);
+    const [firstCard, setFirstCard] = React.useState(null);
+    const [secondCard, setSecondCard] = React.useState(null);
+    const [stopFlip, setStopFlip] = React.useState(false);
+    const [won, setWon] = React.useState(0);
 
-        function NewGame() {
-                setTimeout (() =>{
-                    const randomOrderArray = Data.sort(() => 0.5 - Math.random());
-                    setCardsArray(randomOrderArray);
-                    setMoves(0);
-                    setFirstCard(null);
-                    setSecondCard(null);
-                    setWon(0);
-                }, 1200);
-        }
-
-
-    //this function helps in storing the firstCard and secondCard value
-        function handleSelectedCards(item) {
-            console.log(typeof item);
-            if (firstCard !== null && firstCard !== item.id) {
-                setSecondCard(item);
-            } else {
-                setFirstCard(item);
-            }
-        }
-
-        React.useEffect(() => {
-            if (firstCard  && secondCard ) {
-                setStopFlip(true);
-                if (firstCard.name === secondCard.name) {
-                    setCardsArray((prevArray) => {
-                        return prevArray.map((unit) => {
-                            if (unit.name === firstCard.name) {
-                                return {...unit, matched: true};
-                            }
-                        });
-                    });
-                    setWon((preVal) => preVal + 1 );
-                    removeSelection();
-                } else {
-                    setTimeout(() => {
-                        removeSelection();
-                    }, 1000);
-                }
-            }
-        }, [firstCard, secondCard]);
-
-        function removeSelection() {
+    //this function start new Game
+    function NewGame() {
+        setTimeout(() => {
+            const randomOrderArray = Data.sort(() => 0.5 - Math.random());
+            setCardsArray(randomOrderArray);
+            setMoves(0);
             setFirstCard(null);
             setSecondCard(null);
-            setStopFlip(false);
-            setMoves((prevValue) => prevValue + 1);
+            setWon(0);
+        }, 1200);
+    }
+
+    //this function helps in storing the firstCard and secondCard value
+    function handleSelectedCards(item) {
+        console.log(typeof item);
+        if (firstCard !== null && firstCard.id !== item.id) {
+            setSecondCard(item);
+        } else {
+            setFirstCard(item);
         }
+    }
+
+
+    React.useEffect(() => {
+        if (firstCard && secondCard) {
+            setStopFlip(true);
+            if (firstCard.name === secondCard.name) {
+                setCardsArray((prevArray) => {
+                    return prevArray.map((unit) => {
+                        if (unit.name === firstCard.name) {
+                            return { ...unit, matched: true };
+                        } else {
+                            return unit;
+                        }
+                    });
+                });
+                setWon((preVal) => preVal + 1);
+                removeSelection();
+            } else {
+                setTimeout(() => {
+                    removeSelection();
+                }, 1000);
+            }
+        }
+    }, [firstCard, secondCard]);
+
+    //after the slected images have been checked for
+    //equivalency we empty the firstCard and secondCard component
+    function removeSelection() {
+        setFirstCard(null);
+        setSecondCard(null);
+        setStopFlip(false);
+        setMoves((prevValue) => prevValue + 1);
+    }
 
     //starts the game for the first time.
     React.useEffect(() => {
@@ -69,13 +74,14 @@ function GameBoard () {
     }, []);
 
     return (
-        <div className="container">
-            <div className="header">
-                <h1>Memory Game</h1>
+        <div className="container ms-auto p-6">
+            <div className="header text-center mb-6">
+                <h1 className="text-3xl font-bold">Memory Game</h1>
             </div>
             <div className="board">
                 {
-
+                    // cards component help in coverting the
+                    // data from array to visible data for screen
                     cardsArray.map((item) => (
                         <Card
                             item={item}
@@ -105,7 +111,5 @@ function GameBoard () {
         </div>
     );
 }
-
-
 
 export default GameBoard;

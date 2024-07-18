@@ -1,81 +1,89 @@
-
+// Data.js
 
 const Data = [
     {
         id: 1,
         name: "react",
         img:
-            "",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
         matched: false,
     },
     {
         id: 2,
-        name: "JavaScript",
-        img:"",
+        name: "java",
+        img:
+            "https://cdn-icons-png.flaticon.com/512/226/226777.png",
         matched: false,
     },
     {
         id: 3,
-        name: "CSS",
-        img:"",
+        name: "css",
+        img:
+            "https://cdn-icons-png.flaticon.com/512/919/919826.png",
         matched: false,
     },
     {
         id: 4,
-        name: "Node",
-        img:"",
+        name: "node",
+        img:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS__xZLogSRqVOcB5z4l50ZHSClCM2NfXlWeQ&s",
         matched: false,
     },
     {
         id: 5,
-        name: "HTML",
-        img:"",
+        name: "html",
+        img:
+            "https://icons.iconarchive.com/icons/martz90/hex/512/html-5-icon.png",
         matched: false,
     },
     {
         id: 6,
-        name: "Python",
-        img:"",
+        name: "js",
+        img:
+            "https://media.geeksforgeeks.org/wp-content/uploads/20230927165804/js-3.png",
         matched: false,
     },
     {
         id: 7,
-        name: "React",
-        img:"",
+        name: "react",
+        img:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
         matched: false,
     },
     {
         id: 8,
-        name: "JavaScript",
-        img:"",
+        name: "java",
+        img:
+            "https://cdn-icons-png.flaticon.com/512/226/226777.png",
         matched: false,
     },
     {
         id: 9,
-        name: "CSS",
-        img:"",
+        name: "css",
+        img:
+            "https://cdn-icons-png.flaticon.com/512/919/919826.png",
         matched: false,
     },
     {
         id: 10,
-        name: "Node",
-        img:"",
+        name: "node",
+        img:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS__xZLogSRqVOcB5z4l50ZHSClCM2NfXlWeQ&s",
         matched: false,
     },
     {
         id: 11,
-        name: "HTML",
-        img:"",
+        name: "html",
+        img:
+            "https://icons.iconarchive.com/icons/martz90/hex/512/html-5-icon.png",
         matched: false,
     },
     {
         id: 12,
-        name: "Python",
-        img:"",
+        name: "js",
+        img:
+            "https://media.geeksforgeeks.org/wp-content/uploads/20230927165804/js-3.png",
         matched: false,
     },
-
 ];
-
 export default Data;
-
