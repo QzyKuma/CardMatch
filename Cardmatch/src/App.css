@@ -2,104 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  @apply m-0 p-0 box-border;
 }
 
 .App {
-  height: 100vh;
-  width: 100vw;
-/*  font-family: cursive;*/
-/*  background-color: rgb(21, 56, 66);*/
+  @apply h-screen w-screen bg-white text-gray-800;
 }
 
-/* CSS for GameBoard component */
 .container {
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col items-center justify-center h-full;
 }
-
-/*.header {*/
-/*  display: flex;*/
-/*  flex-direction: row;*/
-/*  padding: 10px;*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*}*/
-
-/*h1 {*/
-/*  align-self: start;*/
-/*  font-size: 2.5rem;*/
-/*  color: rgb(247, 247, 247);*/
-
-/*}*/
 
 .button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 0.8rem;
-  font-family: cursive;
-  width: 200px;
-  font-size: 1.2rem;
-  font-weight: bolder;
-  border-radius: 0.7rem;
-  border-style: none;
-  background-color: red;
-  color: white;
-  margin-top: 4px;
-  margin-left: 55%;
+  @apply flex items-center justify-center px-6 py-3 text-xl font-bold rounded-lg bg-red-600 text-white mt-4 transition-transform duration-300;
 }
 
 .button:hover {
-  border: 2px solid black;
-  cursor: pointer;
+  @apply transform scale-105;
 }
-
-
 
 .board {
-  display: grid;
-  margin: auto;
-  margin-top: 3rem;
-  grid-template-columns: repeat(4, 9rem);
-  place-items: center;
-  row-gap: 2rem;
+  @apply grid grid-cols-4 gap-6 mt-12 p-6 rounded-lg shadow-lg bg-gray-100;
 }
 
-/*.comments {*/
-/*  padding: 0.25rem 1rem;*/
-/*  background-color: white;*/
-/*  margin: auto;*/
-/*  margin-top: 40px;*/
-/*  text-align: center;*/
-/*  border-radius: 2rem;*/
-/*}*/
-
-/*!* CSS for Card component *!*/
 .face {
-  height: 6rem;
+  @apply h-24 w-24 bg-white border border-gray-300 rounded-lg shadow-md transition-transform duration-500 ease-in-out;
 }
 
 .back {
-  height: 6rem;
-  width: 6rem;
-  background-color: rgb(253, 218, 175);
-  color: rgb(61, 21, 21);
-  border: 1px solid black;
-  border-radius: 50%;
+  @apply h-24 w-24 bg-gray-300 text-gray-800 border border-gray-400 rounded-lg shadow-md transition-transform duration-500 ease-in-out;
 }
 
 .item .face {
-  position: absolute;
+  @apply absolute;
   transform: rotateY(90deg);
-  transition: all ease-in 0.25s;
-
+  transition: transform 0.5s ease-in-out;
 }
 
 .toggled .face {
@@ -108,7 +46,7 @@
 }
 
 .item .back {
-  transition: all ease-in 0.25s;
+  transition: transform 0.5s ease-in-out, background-color 0.3s;
   transition-delay: 0.25s;
 }
 

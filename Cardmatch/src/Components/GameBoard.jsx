@@ -1,4 +1,3 @@
-
 import React from "react";
 import Data from "./Data";
 import Card from "./Card";
@@ -25,7 +24,6 @@ function GameBoard() {
 
     // Handle selected cards
     function handleSelectedCards(item) {
-        console.log(typeof item);
         if (firstCard !== null && firstCard.id !== item.id) {
             setSecondCard(item);
         } else {
@@ -72,9 +70,9 @@ function GameBoard() {
     return (
         <div className="container mx-auto p-6">
             <div className="header text-center mb-6">
-                <h1 className="text-4xl font-bold text-gray-800">Memory Game</h1>
+                <h1 className="text-4xl font-bold text-gray-200">Memory Game</h1>
             </div>
-            <div className="board grid grid-cols-4 gap-4 mb-6">
+            <div className="board grid grid-cols-4 gap-4 mb-6 backdrop-blur-md bg-white/30 border border-white/10 shadow-lg p-6 rounded-lg">
                 {cardsArray.map((item) => (
                     <Card
                         item={item}
@@ -91,10 +89,10 @@ function GameBoard() {
             </div>
 
             {won !== 6 ? (
-                <div className="text-center text-lg text-gray-600 mb-4">Moves: {moves}</div>
+                <div className="text-center text-lg text-gray-400 mb-4">Moves: {moves}</div>
             ) : (
-                <div className="text-center text-2xl font-bold text-green-600 mb-4">
-                    ???????? You Won in {moves} moves ????????
+                <div className="text-center text-2xl font-bold text-green-400 mb-4">
+                    🎉 You Won in {moves} moves! 🎉
                 </div>
             )}
             <div className="text-center">
