@@ -3,8 +3,6 @@ import React from "react";
 import Data from "./Data";
 import Card from "./Card";
 
-
-
 function GameBoard() {
     const [cardsArray, setCardsArray] = React.useState([]);
     const [moves, setMoves] = React.useState(0);
@@ -13,7 +11,7 @@ function GameBoard() {
     const [stopFlip, setStopFlip] = React.useState(false);
     const [won, setWon] = React.useState(0);
 
-    //this function start new Game
+    // Start a new game
     function NewGame() {
         setTimeout(() => {
             const randomOrderArray = Data.sort(() => 0.5 - Math.random());
@@ -25,7 +23,7 @@ function GameBoard() {
         }, 1200);
     }
 
-    //this function helps in storing the firstCard and secondCard value
+    // Handle selected cards
     function handleSelectedCards(item) {
         console.log(typeof item);
         if (firstCard !== null && firstCard.id !== item.id) {
@@ -34,7 +32,6 @@ function GameBoard() {
             setFirstCard(item);
         }
     }
-
 
     React.useEffect(() => {
         if (firstCard && secondCard) {
@@ -59,8 +56,7 @@ function GameBoard() {
         }
     }, [firstCard, secondCard]);
 
-    //after the slected images have been checked for
-    //equivalency we empty the firstCard and secondCard component
+    // Remove selection
     function removeSelection() {
         setFirstCard(null);
         setSecondCard(null);
@@ -68,46 +64,44 @@ function GameBoard() {
         setMoves((prevValue) => prevValue + 1);
     }
 
-    //starts the game for the first time.
+    // Start the game for the first time
     React.useEffect(() => {
         NewGame();
     }, []);
 
     return (
-        <div className="container ms-auto p-6">
+        <div className="container mx-auto p-6">
             <div className="header text-center mb-6">
-                <h1 className="text-3xl font-bold">Memory Game</h1>
+                <h1 className="text-4xl font-bold text-gray-800">Memory Game</h1>
             </div>
-            <div className="board">
-                {
-                    // cards component help in coverting the
-                    // data from array to visible data for screen
-                    cardsArray.map((item) => (
-                        <Card
-                            item={item}
-                            key={item.id}
-                            handleSelectedCards={handleSelectedCards}
-                            toggled={
-                                item === firstCard ||
-                                item === secondCard ||
-                                item.matched === true
-                            }
-                            stopflip={stopFlip}
-                        />
-                    ))
-                }
+            <div className="board grid grid-cols-4 gap-4 mb-6">
+                {cardsArray.map((item) => (
+                    <Card
+                        item={item}
+                        key={item.id}
+                        handleSelectedCards={handleSelectedCards}
+                        toggled={
+                            item === firstCard ||
+                            item === secondCard ||
+                            item.matched === true
+                        }
+                        stopflip={stopFlip}
+                    />
+                ))}
             </div>
 
             {won !== 6 ? (
-                <div className="comments">Moves : {moves}</div>
+                <div className="text-center text-lg text-gray-600 mb-4">Moves: {moves}</div>
             ) : (
-                <div className="comments">
+                <div className="text-center text-2xl font-bold text-green-600 mb-4">
                     ???????? You Won in {moves} moves ????????
                 </div>
             )}
-            <button className="button" onClick={NewGame}>
-                New Game
-            </button>
+            <div className="text-center">
+                <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300" onClick={NewGame}>
+                    New Game
+                </button>
+            </div>
         </div>
     );
 }
