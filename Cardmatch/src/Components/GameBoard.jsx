@@ -70,9 +70,10 @@ function GameBoard() {
     return (
         <div className="container mx-auto p-6">
             <div className="header text-center mb-6">
-                <h1 className="text-4xl font-bold text-gray-200">Memory Game</h1>
+                <h1 className="text-5xl font-extrabold text-blue-500 tracking-wide">Memory Game</h1>
             </div>
-            <div className="board grid grid-cols-4 gap-4 mb-6 backdrop-blur-md bg-white/30 border border-white/10 shadow-lg p-6 rounded-lg">
+            <div
+                className="board grid grid-cols-4 gap-4 mb-6 backdrop-blur-md bg-white/30 border border-white/10 shadow-lg p-6 rounded-lg">
                 {cardsArray.map((item) => (
                     <Card
                         item={item}
